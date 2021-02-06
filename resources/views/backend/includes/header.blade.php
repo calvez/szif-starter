@@ -1,6 +1,10 @@
 <header class="c-header c-header-light c-header-fixed c-header-with-subheader">
-    <button class="c-header-toggler c-class-toggler d-lg-none mr-auto" type="button" data-target="#sidebar" data-class="c-sidebar-show"><span class="c-header-toggler-icon"></span></button><a class="c-header-brand d-sm-none" href="{{route("backend.dashboard")}}"><img class="c-header-brand" src="{{asset("img/backend-logo.jpg")}}" style="max-height:50px;min-height:40px;" alt="{{ app_name() }}"></a>
-    <button class="c-header-toggler c-class-toggler ml-3 d-md-down-none" type="button" data-target="#sidebar" data-class="c-sidebar-lg-show" responsive="true"><span class="c-header-toggler-icon"></span></button>
+    <button class="c-header-toggler c-class-toggler d-lg-none mr-auto" type="button" data-target="#sidebar"
+        data-class="c-sidebar-show"><span class="c-header-toggler-icon"></span></button><a
+        class="c-header-brand d-sm-none" href="{{route("backend.dashboard")}}"><img class="c-header-brand"
+            src="{{asset("img/backend-logo.jpg")}}" style="max-height:50px;min-height:40px;" alt="{{ app_name() }}"></a>
+    <button class="c-header-toggler c-class-toggler ml-3 d-md-down-none" type="button" data-target="#sidebar"
+        data-class="c-sidebar-lg-show" responsive="true"><span class="c-header-toggler-icon"></span></button>
 
     <ul class="c-header-nav d-md-down-none">
         <li class="c-header-nav-item px-3">
@@ -13,7 +17,8 @@
 
     <ul class="c-header-nav ml-auto mr-4">
         <li class="c-header-nav-item dropdown d-md-down-none mx-2">
-            <a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            <a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                aria-expanded="false">
                 <i class="c-icon cil-language"></i>&nbsp; {{strtoupper(App::getLocale())}}
             </a>
             <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg pt-0">
@@ -21,8 +26,8 @@
                     <strong>@lang('Change language')</strong>
                 </div>
 
-                <a class="dropdown-item" href="{{route("language.switch", "bn")}}">
-                    বাংলা (BN)
+                <a class="dropdown-item" href="{{route("language.switch", "hu")}}">
+                    Magyar (HU)
                 </a>
                 <a class="dropdown-item" href="{{route("language.switch", "en")}}">
                     English (EN)
@@ -35,9 +40,11 @@
             $notifications_count = optional($notifications)->count();
             $notifications_latest = optional($notifications)->take(5);
             ?>
-            <a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            <a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                aria-expanded="false">
                 <i class="c-icon cil-bell"></i>&nbsp;
-                @if($notifications_count)<span class="badge badge-pill badge-danger">{{$notifications_count}}</span>@endif
+                @if($notifications_count)<span
+                    class="badge badge-pill badge-danger">{{$notifications_count}}</span>@endif
             </a>
             <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg pt-0">
                 <div class="dropdown-header bg-light">
@@ -46,10 +53,12 @@
                 @if($notifications_latest)
                 @foreach($notifications_latest as $notification)
                 @php
-                $notification_text = isset($notification->data['title'])? $notification->data['title'] : $notification->data['module'];
+                $notification_text = isset($notification->data['title'])? $notification->data['title'] :
+                $notification->data['module'];
                 @endphp
                 <a class="dropdown-item" href="{{route("backend.notifications.show", $notification)}}">
-                    <i class="c-icon {{isset($notification->data['icon'])? $notification->data['icon'] : 'cil-bullhorn'}} "></i>&nbsp;{{$notification_text}}
+                    <i
+                        class="c-icon {{isset($notification->data['icon'])? $notification->data['icon'] : 'cil-bullhorn'}} "></i>&nbsp;{{$notification_text}}
                 </a>
                 @endforeach
                 @endif
@@ -57,9 +66,11 @@
         </li>
 
         <li class="c-header-nav-item dropdown">
-            <a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            <a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                aria-expanded="false">
                 <div class="c-avatar">
-                    <img class="c-avatar-img" src="{{ asset(auth()->user()->avatar) }}" alt="{{ auth()->user()->name }}">
+                    <img class="c-avatar-img" src="{{ asset(auth()->user()->avatar) }}"
+                        alt="{{ auth()->user()->name }}">
                 </div>
             </a>
             <div class="dropdown-menu dropdown-menu-right pt-0">
@@ -80,11 +91,13 @@
 
                 <div class="dropdown-header bg-light py-2"><strong>@lang('Settings')</strong></div>
 
-                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                <a class="dropdown-item" href="{{ route('logout') }}"
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     <i class="c-icon cil-account-logout"></i>&nbsp;
                     @lang('Logout')
                 </a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;"> @csrf </form>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;"> @csrf
+                </form>
             </div>
         </li>
     </ul>
@@ -104,8 +117,7 @@
 
 @push('after-scripts')
 <script type="text/javascript">
-
-$(function () {
+    $(function () {
     // Show the time
     showTime();
 })
